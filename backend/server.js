@@ -25,11 +25,11 @@ app.use(bodyparser.json());
 app.use(
   helmet.contentSecurityPolicy({
     directives: {
-      defaultSrc: ["'self'", "http://165.22.76.202:5000"],
-      mediaSrc: ["'self'", "http://165.22.76.202:5000", "blob:"],
+      defaultSrc: ["'self'", "http://localhost:5000"],
+      mediaSrc: ["'self'", "http://localhost:5000", "blob:"],
       styleSrc: ["'self'", "https://fonts.googleapis.com", "'unsafe-inline'"],
       fontSrc: ["'self'", "https://fonts.gstatic.com"],
-      connectSrc: ["'self'", "ws://165.22.76.202:5000"],
+      connectSrc: ["'self'", "ws://localhost:5000"],
     },
   })
 );
@@ -235,7 +235,7 @@ mongoose.connection.on("error", (error) => {
 //  origin: "http://localhost:3000",
 const io = require("socket.io")(server, {
   cors: {
-    origin: "http://165.22.76.202:3000",
+    origin: "http://localhost:3000",
   },
 });
 io.on("connection", (socket) => {

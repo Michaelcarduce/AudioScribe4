@@ -5,8 +5,8 @@ import Homepage from "./Pages/Homepage";
 import Authorization from "./Pages/Authorization";
 
 import io from "socket.io-client";
-// const endpoint = "http://localhost:5000";
-const endpoint = "http://165.22.76.202:5000";
+const endpoint = "http://localhost:5000";
+// const endpoint = "http://165.22.76.202:5000";
 var socket;
 
 function App() {
