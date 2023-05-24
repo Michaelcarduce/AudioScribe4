@@ -45,9 +45,8 @@ const ReplaceAudio = () => {
       setModifiedVideoUrl(null);
       const formData = new FormData();
       formData.append("video", videoFile);
-
+      setIsLoading(true);
       try {
-        setIsLoading(true);
         const response = await axios.post("/convert/single", formData, {
           responseType: "blob",
         });
@@ -86,9 +85,8 @@ const ReplaceAudio = () => {
       const formData = new FormData();
       formData.append("video", videoFile);
       formData.append("audio", audioFile);
-
+      setIsLoading(true);
       try {
-        setIsLoading(true);
         const response = await axios.post("/convert", formData, {
           responseType: "blob",
         });
