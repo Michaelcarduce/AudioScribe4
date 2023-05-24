@@ -9,6 +9,7 @@ const ReplaceAudio = () => {
   const [audioFile, setAudioFile] = useState(null);
   const [isAudioSelected, setIsAudioSelected] = useState(false);
   const [modifiedVideoUrl, setModifiedVideoUrl] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
   const toast = useToast();
 
   const handleVideoUpload = (e) => {
@@ -46,13 +47,16 @@ const ReplaceAudio = () => {
       formData.append("video", videoFile);
 
       try {
+        setIsLoading(true);
         const response = await axios.post("/convert/single", formData, {
           responseType: "blob",
         });
         console.log(response.data);
         setModifiedVideoUrl(URL.createObjectURL(response.data));
         console.log(modifiedVideoUrl);
+        setIsLoading(false);
       } catch (error) {
+        setIsLoading(false);
         console.log(error);
       }
 
@@ -84,13 +88,16 @@ const ReplaceAudio = () => {
       formData.append("audio", audioFile);
 
       try {
+        setIsLoading(true);
         const response = await axios.post("/convert", formData, {
           responseType: "blob",
         });
         console.log(response.data);
         setModifiedVideoUrl(URL.createObjectURL(response.data));
         console.log(modifiedVideoUrl);
+        setIsLoading(false);
       } catch (error) {
+        setIsLoading(false);
         console.log(error);
       }
 
@@ -283,6 +290,7 @@ const ReplaceAudio = () => {
         </Button>
       )}
       <Box mt="2rem">
+        {isLoading && <p>Loading...</p>}
         {modifiedVideoUrl && (
           <video controls>
             <source src={modifiedVideoUrl} type="video/mp4" />
