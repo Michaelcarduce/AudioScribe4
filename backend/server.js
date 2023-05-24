@@ -13,6 +13,7 @@ const { exec } = require("child_process");
 const bodyparser = require("body-parser");
 const gtts = require("gtts");
 const Sentiment = require("sentiment");
+const cors = require("cors");
 
 const app = express();
 const sentiment = new Sentiment();
@@ -21,15 +22,37 @@ app.use(helmet());
 app.use(express.json());
 app.use(bodyparser.urlencoded({ extended: false }));
 app.use(bodyparser.json());
+app.use(cors());
+
+// app.use(
+//   helmet.contentSecurityPolicy({
+//     directives: {
+//       defaultSrc: ["'self'", "http://localhost:5000"],
+//       mediaSrc: ["'self'", "http://localhost:5000", "blob:"],
+//       styleSrc: ["'self'", "https://fonts.googleapis.com", "'unsafe-inline'"],
+//       fontSrc: ["'self'", "https://fonts.gstatic.com"],
+//       connectSrc: ["'self'", "ws://localhost:5000"],
+//     },
+//   })
+// );
 
 app.use(
   helmet.contentSecurityPolicy({
     directives: {
-      defaultSrc: ["'self'", "http://localhost:5000"],
-      mediaSrc: ["'self'", "http://localhost:5000", "blob:"],
+      defaultSrc: [
+        "'self'",
+        "http://localhost:5000",
+        "http://165.22.76.202:5000",
+      ],
+      mediaSrc: [
+        "'self'",
+        "http://localhost:5000",
+        "http://165.22.76.202:5000",
+        "blob:",
+      ],
       styleSrc: ["'self'", "https://fonts.googleapis.com", "'unsafe-inline'"],
       fontSrc: ["'self'", "https://fonts.gstatic.com"],
-      connectSrc: ["'self'", "ws://localhost:5000"],
+      connectSrc: ["'self'", "ws://localhost:5000", "ws://165.22.76.202:5000"],
     },
   })
 );
