@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import { useToast } from "@chakra-ui/react";
 import { FaUndo as UndoIcon, FaRedo as RedoIcon } from "react-icons/fa";
-import "./Tts.css";
+import "./SpeechToText.css";
 
 const SpeechRecognition =
   window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -11,7 +11,7 @@ mic.continuous = true;
 mic.interimResults = true;
 mic.lang = "en-US";
 
-const Tts = () => {
+const SpeechToText = () => {
   const [isListening, setIsListening] = useState(false);
   const [note, setNote] = useState(null);
   // const [savedNotes, setSavedNotes] = useState([]);
@@ -226,4 +226,4 @@ const Tts = () => {
   );
 };
 
-export default Tts;
+export default SpeechToText;

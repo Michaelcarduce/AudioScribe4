@@ -6,8 +6,8 @@ import {
   TabPanel,
   useMediaQuery,
 } from "@chakra-ui/react";
-import Tts from "./Page/Tts";
-import Stt from "./Page/Stt";
+import SpeechToText from "./Page/SpeechToText";
+import TextToSpeech from "./Page/TextToSpeech";
 import Highlights from "./Page/Highlights";
 import ReplaceAudio from "./Page/ReplaceAudio";
 import { FiMic, FiSpeaker } from "react-icons/fi";
@@ -105,10 +105,10 @@ function Sidebar() {
       </TabList>
       <TabPanels style={{ flex: "1" }}>
         <TabPanel>
-          <Tts />
+          <SpeechToText />
         </TabPanel>
         <TabPanel>
-          <Stt />
+          <TextToSpeech />
         </TabPanel>
         <TabPanel>
           <Highlights />

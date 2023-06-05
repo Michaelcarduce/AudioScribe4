@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 // import { useSpeechSynthesis } from "react-speech-kit"; - uninstalled
 import axios from "axios";
 import { FaUndo as UndoIcon, FaRedo as RedoIcon } from "react-icons/fa";
-import "./Stt.css";
+import "./TextToSpeech.css";
 
-const Stt = () => {
+const TextToSpeech = () => {
   // const { speak, speaking, cancel } = useSpeechSynthesis();
   const [text, setText] = useState("");
   const [language, setLanguage] = useState("en");
@@ -237,4 +237,4 @@ const Stt = () => {
   );
 };
 
-export default Stt;
+export default TextToSpeech;
